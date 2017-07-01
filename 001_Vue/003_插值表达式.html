@@ -18,12 +18,21 @@
              -->
             {{name}}
 
+            <!--  Vue.js 提供了完全的 JavaScript 表达式支持。 -->
+            <p>{{age + 1}}</p>
+            <p>{{ ok ? 'yes' : 'no'}}</p>
+
+            <!-- 每个绑定都只能包含单个表达式，因此流程控制和语句都不能使用 -->
+            <!-- <p>{{if (ok) { return message }}}</p> -->
+            <!-- <p>{{ var one = 1 }}</p> -->
+            <p>{{if1 (ok)}}</p>
+
             <!-- 你也可以只处理单次插值，今后的数据变化就不会再引起插值更新了 -->
 
             <!-- 1.0 加* -->
-            <span>{{*name}}</span>
+            <p>{{*name}}</p>
             <!-- 2.0 加 v-once 指令 -->
-            <span v-once>{{name}}</span>
+            <!-- <p v-once>{{name}}</p> -->
 
             <button v-on:click="add()" type="button">点我加值</button>
         </div>
@@ -32,12 +41,16 @@
         var vm = new Vue({
             el : ".app",  // 表示当前 Vue 将要接管类名为 .app 的区域
             data : {
-                name : "我是谁"  // 相当于 MVVM 中的 Model;
+                name : "我是谁",  // 相当于 MVVM 中的 Model;
+                age : 10
             },
             // methods中定义需要的方法
             methods : {
                 add : function(){
                     this.name += "1";
+                },
+                "if1" : function(ok){
+                    return this.age;
                 }
             }
         })

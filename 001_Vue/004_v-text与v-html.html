@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>将变量值渲染到元素中</title>
+        <script src="../Vue_001.js"></script>
+    </head>
+    <body>
+        <div class="app">
+            <!--
+                v-text 与 v-html : 将变量值渲染到元素中
+                - 需要结合元素来进行使用
+                - 性能稍好并且避免 FOUC（浏览器样式闪烁）
+             -->
+
+            <!-- v-text ：将数据解析为纯文本 -->
+            <p v-text="text"></p>
+            <!-- v-html : 输出内容为真正的html -->
+            <p v-html="html"></p>
+
+            <!--
+                注意：
+                    在网站上动态渲染任意 HTML 是非常危险的，因为容易导致 XSS 攻击。
+                    只在可信内容上使用 v-html，永不用在用户提交的内容上。
+             -->
+        </div>
+    <script type="text/javascript">
+        var vm = new Vue({
+            el : ".app",
+            data : {
+                text : "我是谁",
+                html : "<h3>我是谁</h3>"
+            }
+        })
+    </script>
+    </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>将变量值渲染到元素中</title>
+        <style>
+            [v-cloak]{
+                display: none;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div class="app">
+
+            <!--
+                v-cloak : 不需要表达式
+                - 这个指令保持在元素上直到关联实例结束编译。
+                  和 CSS 规则如 [v-cloak] { display: none } 一起用时，
+                  这个指令可以隐藏未编译的 Mustache 标签直到实例准备完毕。
+             -->
+            <p v-cloak>{{text}}</p>
+
+        </div>
+    <script src="../Vue_001.js"></script>
+    <script type="text/javascript">
+        var vm = new Vue({
+            el : ".app",
+            data : {
+                text : "我是谁"
+            }
+        })
+    </script>
+    </body>
+</html>
