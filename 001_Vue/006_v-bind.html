@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>将变量值渲染到元素中</title>
+        <style>
+            [v-cloak]{
+                display: none;
+            }
+            .red{
+                color: red;
+            }
+            .class-a{
+                background-color: lightgreen;
+            }
+            .class-b{
+                color: lightyellow;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div class="app">
+
+            <!-- 动态地绑定一个或多个 attribute，或一个组件 prop 到表达式。 -->
+            <input type="text" v-bind:value="text">
+
+            <!-- 简写语法  -->
+            <input type="text" :value="text">
+
+            <!-- 绑定 href -->
+            <a v-bind="{href:'http://www.baidu.com/' + id}">我是a链接</a>
+
+
+            <!-- ======================= 拓展 ========================= -->
+            <!-- 在绑定 class 或 style 时，支持其它类型的值，如数组或对象。 -->
+            <p :class="{red : isRed}">我是p元素</p>
+            <p :style="{color : ftcolor}">我也是一个p元素</p>
+            <!-- 直接绑定数据里的一个对象 -->
+            <p :class="objectBgc">我又是一个p元素</p>
+            <p :style="styleObj1">我又是一个p元素</p>
+            <!-- 直接绑定数据里的一个数组 -->
+            <p :class="[arrayBga]">我还是，不服咬我呀</p>
+            <p :style="[styleObj2]">我还是，不服咬我呀</p>
+
+        </div>
+    <script src="../Vue_001.js"></script>
+    <script type="text/javascript">
+        var vm = new Vue({
+            el : ".app",
+            data : {
+                id : 50,
+                text : "我是谁",
+                isRed : true,
+                ftcolor : "skyblue",
+                objectBgc : {
+                    'class-a': true,
+                    'class-b': true
+                },
+                styleObj1 : {
+                    backgroundColor : "purple",
+                    color : "#fff"
+                },
+                arrayBga : "class-a",
+                styleObj2 : {
+                    color: 'red',
+                    fontSize: '13px'
+                }
+            }
+        })
+    </script>
+    </body>
+</html>
