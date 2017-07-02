@@ -75,8 +75,14 @@ v-cloak : 不需要表达式
     + [1.0][v-for](http://v1-cn.vuejs.org/guide/list.html)
     + [2.0][v-for](https://cn.vuejs.org/v2/guide/list.html) ☆☆☆
 
+### 第十节：v-if 与 v-show
 
+- `v-if` 与 `v-show`
+    + 根据表达式的值的真假条件渲染元素
 
+- `v-if` 与 `v-show` 的区别
+    + `v-if` 是将元素删除、添加 , 在切换时元素及它的数据绑定 / 组件被销毁并重建
+    + `v-show` 是将元素隐藏`(none)`和显示`(block)`,根据表达式的值的真假切换元素的 display CSS 属性
 
 
 

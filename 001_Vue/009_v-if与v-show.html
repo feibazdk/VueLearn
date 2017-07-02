@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>v-if与v-show</title>
+    </head>
+    <body>
+        <div class="app">
+            <h3>v-if | v-show 根据表达式的值的真假条件渲染元素</h3>
+            <button type="button" v-on:click="show()">点我点我</button>
+            <!-- v-if 是将元素删除、添加 , 在切换时元素及它的数据绑定 / 组件被销毁并重建 -->
+            <!-- <p v-if="istrue">葫芦娃葫芦娃，一根藤上七个瓜</p> -->
+
+            <!-- v-show 是将元素隐藏和显示,根据表达式的值的真假切换元素的 display CSS 属性 -->
+            <p v-show="istrue">葫芦娃葫芦娃，一根藤上七个瓜</p>
+
+        </div>
+    <script src="../Vue_001.js"></script>
+    <!-- <script src="../Vue_002.js"></script> -->
+    <script type="text/javascript">
+        var vm = new Vue({
+            el : ".app",
+            data : {
+                istrue : true
+            },
+            methods : {
+                show : function(){
+                    this.istrue = !this.istrue
+                }
+            }
+        })
+    </script>
+    </body>
+</html>
