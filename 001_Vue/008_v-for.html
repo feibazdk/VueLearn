@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>v-model</title>
+    </head>
+    <body>
+        <div class="app">
+            <ul>
+                <!-- 1.0 写法 -->
+                <!-- 基于源数据将元素或模板块重复数次。指令的值必须使用特定语法  -->
+                <!-- 特殊的变量索引 【$index】 -->
+                <!-- v-for 默认行为试着不改变整体，而是替换元素。迫使其重新排序的元素, 需要添加 track-by="$index" -->
+                <!-- <li v-for="(index, item) in list" track-by="$index">{{item}} - {{$index}}</li> -->
+
+                <!-- <li v-for="(key, item) in user">{{key}} - {{item}}</li> -->
+
+
+                <!-- 2.0写法 -->
+                <!-- v-for 默认行为试着不改变整体，而是替换元素。迫使其重新排序的元素,您需要提供一个 key 的特殊属性 -->
+                <li v-for="(item, index) in list" :key="item.id">{{item}}</li>
+                <!-- 特殊的变量索引 index -->
+                <!-- <li v-for="(item, index) in list">{{item}} - {{index}}</li> -->
+
+                <li v-for="(key, item) in user">{{key}} - {{item}}</li>
+            </ul>
+        </div>
+    <!-- <script src="../Vue_001.js"></script> -->
+    <script src="../Vue_002.js"></script>
+    <script type="text/javascript">
+        var vm = new Vue({
+            el : ".app",
+            data : {
+                list : [ 1,2,3,4,5,1 ],
+                user : { username : "wushu", age : 20}
+            }
+        })
+    </script>
+    </body>
+</html>

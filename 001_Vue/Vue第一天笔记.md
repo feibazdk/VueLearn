@@ -41,7 +41,7 @@ v-cloak : 不需要表达式
         * 简写：`<input type="text" :value="text">`
     + 在绑定 class 或 style 时，支持其它类型的值，如数组或对象
         * 见例子
-    + [Class 与 Style 绑定](http://v1-cn.vuejs.org/guide/class-and-style.html#数组语法-1)
+    + 文档：[Class 与 Style 绑定](http://v1-cn.vuejs.org/guide/class-and-style.html#数组语法-1)
 
 
 ### 第八节：v-model
@@ -53,14 +53,27 @@ v-cloak : 不需要表达式
     + `<textarea>`
     + `components`
 - 修饰符
-    + lazy -- 在 "change" 而不是 "input" 事件中更新
-    + number -- 将用户的输入转为 Number 类型
-    + debounce(1.0) --设置一个最小的延时，在每次敲击之后延时同步输入框的值与数据。
-    + trim(2.0) -- 过滤用户输入的首尾空格
+    + `lazy` -- 在 `"change"` 而不是 `"input"` 事件中更新
+    + `number` -- 将用户的输入转为 `Number` 类型
+    + `debounce`(1.0) --设置一个最小的延时，在每次敲击之后延时同步输入框的值与数据。
+    + `trim`(2.0) -- 过滤用户输入的首尾空格
 
+- 文档
+    + [1.0][表单控件绑定](http://v1-cn.vuejs.org/guide/forms.html)
+    + [2.0][表单控件绑定](https://cn.vuejs.org/v2/guide/forms.html#lazy)
 
+### 第九节：v-for
 
+- v-for ：基于源数据将元素或模板块重复数次。指令的值必须使用特定语法
 
+- 1.0 与 2.0的区别
+    + `vue1.0`中有 `$index` ，而`vue2.0`中将 `$index`移除
+    + `vue1.0`中 `(index,item) in list`  而 `vue2.0` 变成了 `(item,index) in list`的写法
+    + `vue1.0`中使用 `track-by="$index"` 来标记`dom`对象的唯一性，`vue2.0`中改成了 `:key="item.id"`
+
+- 文档
+    + [1.0][v-for](http://v1-cn.vuejs.org/guide/list.html)
+    + [2.0][v-for](https://cn.vuejs.org/v2/guide/list.html) ☆☆☆
 
 
 
