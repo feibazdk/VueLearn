@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>v-model</title>
+    </head>
+    <body>
+        <div class="app">
+
+            <!-- 在表单控件或者组件上创建双向绑定。 -->
+            <input type="text" v-model="name" value="">
+            <p>{{name}}</p>
+
+            <!-- ======================= 修饰符的使用 ================= -->
+            <!-- 1.0 -->
+            <!-- 在 "change" 而不是 "input" 事件中更新 -->
+            <input v-model="name" lazy>
+            <!-- 将用户的输入转为 Number 类型 -->
+            <input v-model="age" number>
+            <!-- 设置一个最小的延时，在每次敲击之后延时同步输入框的值与数据。
+                如果每次更新都要进行高耗操作（例如在输入提示中 Ajax 请求），它较为有用。
+              -->
+            <input v-model="name" debounce="500">
+            <p>{{name}}</p>
+
+
+            <!-- 2.0 -->
+            <!-- 在 "change" 而不是 "input" 事件中更新 -->
+            <!-- <input v-model.lazy="name" > -->
+            <!-- 将用户的输入转为 Number 类型 -->
+            <!-- <input v-model.number="age" type="number"> -->
+            <!-- 过滤用户输入的首尾空格 -->
+            <!-- <input v-model.trim="age"> -->
+            <!-- <button type="button" @:click="alert()">惦记我</button> -->
+        </div>
+    <script src="../Vue_001.js"></script>
+    <!-- <script src="../Vue_002.js"></script> -->
+    <script type="text/javascript">
+        var vm = new Vue({
+            el : ".app",
+            data : {
+                name : "",
+                age : 10
+            },
+            methods : {
+                alert : function(){
+                    alert(this.age)
+                }
+            }
+        })
+    </script>
+    </body>
+</html>
