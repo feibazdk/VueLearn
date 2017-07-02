@@ -105,7 +105,38 @@ v-cloak : 不需要表达式
     + `.passive` - (2.3.0) 以 `{ passive: true }` 模式添加侦听器
 
 - 文档 v-on
-    + [1.0][v-on](http://v1-cn.vuejs.org/api/#v-on) 
+    + [1.0][v-on](http://v1-cn.vuejs.org/api/#v-on)
     + [2.0][v-on](https://cn.vuejs.org/v2/api/#v-on)
+
+
+### 实现品牌数据删除案例
+
+- findIndex
+    + 语法：arrayObj.findIndex(callbackfn [, thisArg]);
+    + 返回满足回调函数中指定的测试条件的第一个数组元素的索引值。
+    + arrayObj
+        * 必需。数组对象。
+    + callbackfn
+        * 必需。用于测试数组中的每个元素的回调函数。
+        * 回调函数语法：function callbackfn(value, index, thisArg)
+        * Value：数组元素的值。index：数组元素的数字索引。arrayObj：要遍历的数组对象。
+    + thisArg
+        * 可选。指定回调函数中的 this 对象。如果未指定，则未定义 this 对象。
+> 对于数组中的每个元素，findIndex 方法都会调用一次回调函数（采用升序索引顺序），直到有元素返回 true。<br>   
+只要有一个元素返回 true，findIndex 立即返回该返回 true 的元素的索引值。<br>
+如果数组中没有任何元素返回 true，则 findIndex 返回 -1。
+
+```javascript
+    var abc = [1,2,3];
+    abc.findIndex(function(item){
+       return item == 2;  // 返回 索引 1
+    })
+```
+```javascript
+    var abc = [1,2,3];
+    abc.findIndex(function(item){
+       return item == 4;  // 返回 -1
+    })
+```
 
 ## 本地搭建服务
