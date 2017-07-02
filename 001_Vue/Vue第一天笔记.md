@@ -84,15 +84,28 @@ v-cloak : 不需要表达式
     + `v-if` 是将元素删除、添加 , 在切换时元素及它的数据绑定 / 组件被销毁并重建
     + `v-show` 是将元素隐藏`(none)`和显示`(block)`,根据表达式的值的真假切换元素的 display CSS 属性
 
+- 文档 v-if 与 v-show
+    + [1.0][v-if](http://v1-cn.vuejs.org/guide/conditional.html)
+    + [2.0][v-if](https://cn.vuejs.org/v2/guide/conditional.html)
+    + [1.0][v-show](http://v1-cn.vuejs.org/guide/conditional.html#v-show)
+    + [2.0][v-show](https://cn.vuejs.org/v2/guide/conditional.html#v-show)
 
+### 第十一节：v-on 修饰符
 
+- v-on 修饰符
+    + `.stop` - 调用 `event.stopPropagation()`。
+    + `.prevent` - 调用 `event.preventDefault()`。
+    + `.capture` - 添加事件侦听器时使用 `capture` 模式。
+    + `.self` - 只当事件是从侦听器绑定的元素本身触发时才触发回调。
+    + `.native` - 监听组件根元素的原生事件。
+    + `.once` - 只触发一次回调。
+    + `.left` - (2.2.0) 只当点击鼠标左键时触发。
+    + `.right` - (2.2.0) 只当点击鼠标右键时触发。
+    + `.middle` - (2.2.0) 只当点击鼠标中键时触发。
+    + `.passive` - (2.3.0) 以 `{ passive: true }` 模式添加侦听器
 
-
-
-
-
-
-
-
+- 文档 v-on
+    + [1.0][v-on](http://v1-cn.vuejs.org/api/#v-on) 
+    + [2.0][v-on](https://cn.vuejs.org/v2/api/#v-on)
 
 ## 本地搭建服务
