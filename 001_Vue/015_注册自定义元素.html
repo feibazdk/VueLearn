@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>自定义私有过滤器</title>
+        <script src="../Vue_001.js"></script>
+    </head>
+    <body>
+        <div class="app">
+            <input v-color="color" v-focus type="text" name="text">
+            <my-red>我是谁</my-red>
+        </div>
+
+    <script type="text/javascript">
+
+        // Vue.directive("focus",function(){
+        //     var inputText = this.el;
+        //     console.log(inputText);
+        //     inputText.focus();
+        // })
+
+        Vue.directive("focus",{
+            bind : function(){
+                var inputText = this.el;
+                console.log(inputText);
+                inputText.focus();
+            }
+
+        })
+
+
+        Vue.directive("color",function(){
+            this.el.style.color = this.vm[this.expression]
+        })
+
+        Vue.elementDirective("my-red",{
+            bind : function(){
+                this.el.style.color='red';
+            }
+        })
+        var vm = new Vue({
+            el : ".app",
+            data : {
+                color : "skyblue",
+                name : "我是谁"
+            }
+        })
+    </script>
+    </body>
+</html>
