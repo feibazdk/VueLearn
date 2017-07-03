@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>自定义全局过滤器</title>
+        <script src="../../vue_001.js"></script>
+    </head>
+    <body>
+        <div class="app">
+            <p>{{ name | reverse }}</p>
+            <p>{{ name | wrap 'before' ' after'}}</p>
+            <input type="text" v-model="user">
+            <p>{{ name | concat user}}</p>
+        </div>
+        <script>
+            // 用全局方法 Vue.filter() 注册一个自定义过滤器，
+            // 它接收两个参数：过滤器 ID 和过滤器函数。过滤器函数以值为参数，返回转换后的值
+            Vue.filter("reverse",function(value){
+                return value.split("").reverse().join("");
+            });
+
+
+            Vue.filter("wrap",function(value, begin, end){
+                return value + begin + end;
+            })
+
+            // 如果过滤器参数没用括号包起来，则它会在当前vm作用域内动态计算
+            // 另外，过滤器函数的this始终指向掉用它的vm
+            Vue.filter("concat",function(value, input){
+                return value + input;
+            })
+
+
+
+            var vm = new Vue({
+                el : ".app",
+                data : {
+                    name : "who am i ",
+                    user : "admin"
+                },
+                methods : {
+
+                }
+            })
+        </script>
+    </body>
+</html>

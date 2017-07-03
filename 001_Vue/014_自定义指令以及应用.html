@@ -18,6 +18,8 @@
             inputText.focus();
         })
 
+        // 自定义指令使用directive方法，
+        // 第一个参数为 过滤器的名字，不需要加 v-,但是说调用的时候需要加上 v-
         Vue.directive("color",function(){
             this.el.style.color = this.vm[this.expression]
         })

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>自定义全局过滤器</title>
+        <script src="../../vue_001.js"></script>
+    </head>
+    <body>
+        <div class="app">
+            <!-- 调用时需要加上 v- -->
+            <div v-my-directive></div>
+        </div>
+        <script>
+            // Vue.directive(id, definition) 方法注册一个全局自定义指令，它接收两个参数指令 ID 与定义对象
+            // 定义一个指定的时候，不需要加上 v-
+            Vue.directive("my-directive",{
+                bind : function(){},
+                update : function(){},
+                unbind : function(){}
+            })
+            var vm = new Vue({
+                el : ".app",
+                data : {
+                    name : "who am i ",
+                    user : "admin"
+                },
+                methods : {
+
+                }
+            })
+        </script>
+    </body>
+</html>
