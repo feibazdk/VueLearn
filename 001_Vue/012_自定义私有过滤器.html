@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>自定义私有过滤器</title>
+    </head>
+    <body>
+        <div class="app">
+            <p>{{time}}</p>
+            <p>{{time | datefmt}}</p>
+        </div>
+    <script src="../Vue_001.js"></script>
+    <script type="text/javascript">
+        var vm = new Vue({
+            el : ".app",
+            data : {
+                time : new Date()
+            },
+            filters : {
+                // input是自定义过滤器的默认参数，input的值永远都是取自于 | 左边的内容
+                datefmt : function(input){
+                    var res = "";
+                    var year = input.getFullYear();
+                    var month = input.getMonth() + 1;
+                    var day = input.getDate();
+
+                    res = year +'-' + month +'-'+ day;
+
+                    return res;
+                }
+            }
+        })
+    </script>
+    </body>
+</html>
