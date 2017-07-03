@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>品牌案例</title>
+    <style>
+    .table{
+        width: 800px;
+        border-collapse: collapse;
+        margin: 20px auto;
+    }
+    .table th{
+        background-color: skyblue;
+        color:white;
+        font-size: 16px;
+        padding: 5px;
+        text-align: center;
+        border: 1px solid black;
+    }
+    .table td{
+        padding: 5px;
+        text-align: center;
+        border: 1px solid black;
+    }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <table class="table">
+            <tr>
+                <th>编号</th>
+                <th>名称</th>
+                <th>创建时间</th>
+                <th>操作</th>
+            </tr>
+            <tr v-for="item in list">
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.ctime}}</td>
+                <td><a href="#">删除</a></td>
+            </tr>
+        </table>
+    </div>
+    <script src="../../Vue_001.js"></script>
+    <script src="../../vue-resource.js"></script>
+    <script type="text/javascript">
+    var vm = new Vue({
+        el : ".app",
+        data : {
+            list : [
+                {
+                    "id": 1,
+                    "name": "奥迪",
+                    "ctime": "2017-02-07T10:32:07.000Z"
+                }
+            ]
+        },
+        // Vue 对象实例创建成功以后就会自动调用这个方法
+        created : function(){
+            this.getlist();
+        },
+        methods : {
+            getlist : function(){
+                this.$http.get("http://127.0.0.1:8899/api/getprodlist")
+                    .then(function(res){
+                        if (res.body.status != 0) {
+                            alert(res.body.message)
+                        }
+
+                        this.list = res.body.message;
+                    });
+            }
+        }
+    })
+    </script>
+</body>
+</html>
