@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>父组件向子组件传值</title>
+        <script src="../../vue_001.js"></script>
+    </head>
+    <body>
+
+        <div class="app">
+            <compon :id="id"></compon>
+        </div>
+
+        <template id="temp">
+            {{id}}
+        </template>
+
+        <script>
+            var vm = new Vue({
+                el : ".app",
+                data : {
+                    id : 150
+                },
+                components : {
+                    "compon" : {
+                        template : "#temp",
+                        props : ['id']
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

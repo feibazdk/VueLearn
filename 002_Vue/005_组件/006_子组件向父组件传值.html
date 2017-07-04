@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>父组件向子组件传值</title>
+        <script src="../../vue_001.js"></script>
+    </head>
+    <body>
+
+        <div class="app">
+            <compon v-on:send = "getdata"></compon>
+        </div>
+
+        <template id="temp">
+            <button type="button" @click="senddata">发送数据给父组件</button>
+        </template>
+
+        <script>
+            var vm = new Vue({
+                el : ".app",
+                data : {
+                    id : 150
+                },
+                methods : {
+                    getdata : function(val){
+                        alert(val)
+                    }
+                },
+                components : {
+                    "compon" : {
+                        template : "#temp",
+                        methods : {
+                            senddata : function(){
+                                this.$emit("send","hello")
+                            }
+                        }
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

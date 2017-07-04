@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>component实现组件动态切换</title>
+        <script src="../../vue_001.js"></script>
+    </head>
+    <body>
+
+        <div class="app">
+            <a href="#" v-on:click="urlName='login'">登录</a>
+            <a href="#" v-on:click="urlName='register'">注册</a>
+
+            <component :is="urlName"></component>
+        </div>
+
+        <script type="text/javascript">
+
+            Vue.component("login",{
+                template : "<h3>登录页面</h3>"
+            })
+
+            Vue.component("register",{
+                template : "<h3>注册页面</h3>"
+            })
+
+            new Vue({
+                el : ".app",
+                data : {
+                    urlName : "login"
+                }
+            })
+        </script>
+    </body>
+</html>
