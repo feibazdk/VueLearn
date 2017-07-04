@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>v-el和v-ref以及ref</title>
+        <script src="../../vue_002.js"></script>
+    </head>
+    <body>
+
+        <div class="app">
+            <button type="button" @click="getDom">获取dom对象</button>
+            <div ref="mydiv" id="div1">hello v-el</div>
+
+            <button @click="getcom">获取组件对象</button>
+		    <login ref="mycom"></login>
+        </div>
+
+
+        <script>
+            var vm = new Vue({
+                el : ".app",
+                methods : {
+                    getDom : function(){
+                        console.log(this.$refs.mydiv.innerHTML);
+                    },
+                    getcom : function(){
+                        console.log(this.$refs.mycom.subName);
+                    }
+                },
+                components : {
+                    "login" : {
+                        data : function(){
+                            return {
+                                subName : "我是谁"
+                            }
+                        },
+                        template : "<h3>这是一个子组件</h3>"
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
