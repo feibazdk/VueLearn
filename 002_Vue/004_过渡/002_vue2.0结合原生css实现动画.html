@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>vue2.0结合原生css实现动画</title>
+        <style>
+            .show-enter-active, .show-leave-active{
+                transition: all 0.4s ease;
+                padding-left: 10px
+            }
+            .show-enter, .show-leave-active{
+                transition: all 0.4s ease;
+                padding-left: 200px;
+            }
+        </style>
+        <script src="../../vue_002.js"></script>
+    </head>
+    <body>
+        <div class="app">
+            <button v-on:click="toggle()" type="button">点我触发过渡</button>
+            <transition name="show">
+                <span v-show="isshow">葫芦娃葫芦娃</span>
+            </transition>
+        </div>
+
+        <script>
+            var vm = new Vue({
+                el : ".app",
+                data : {
+                    isshow : false
+                },
+                methods : {
+                    toggle : function(){
+                        this.isshow = !this.isshow
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
