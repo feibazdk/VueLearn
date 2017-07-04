@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>vue1.0结合原生css实现动画</title>
+        <link rel="stylesheet" href="./animate.css">
+        <script src="../../vue_001.js"></script>
+    </head>
+    <body>
+        <!-- 使用动画的步骤总结：
+            1、在需要进行动画控制的元素上增加 transition = "自定义"
+            2、利用三个css控制
+         -->
+        <div class="app">
+            <button v-on:click="toggle()" type="button">点我触发过渡</button>
+            <div  class="animated" transition="show" v-show="isshow">葫芦娃葫芦娃</span>
+        </div>
+
+        <script>
+            var vm = new Vue({
+                el : ".app",
+                data : {
+                    isshow : false
+                },
+                methods : {
+                    toggle : function(){
+                        this.isshow = !this.isshow
+                    }
+                },
+                transitions : {
+                    "show" : {
+                        enterClass : "fadeInRight",
+                        leaveClass : "fadeOutRight"
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
