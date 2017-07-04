@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>定义和注册组件</title>
+        <style></style>
+        <script src="../../vue_001.js"></script>
+    </head>
+    <body>
+
+        <div class="app">
+            <login></login>
+            <register></register>
+            <account></account>
+            <dengzhu></dengzhu>
+        </div>
+
+        <template id="account">
+            <div>
+                <a href="#">登录</a> |
+                <a href="#">注册</a>
+            </div>
+        </template>
+
+        <script type="x-tempalte" id="dengzhu">
+            <div>
+                <a href="#">登录了</a> |
+                <a href="#">注册了</a>
+            </div>
+        </script>
+
+        <script>
+            // 第一种 ： 定义一个全局组件写法
+            // 定义组件
+            var login = Vue.extend({
+                template : "<h3>登录页面</h3>"
+            });
+
+            // 使用组件
+            Vue.component("login",login);
+
+            // 第二种：定义一个全局组件写法
+            Vue.component("register",{
+                template : "<h3>注册页面</h3>"
+            });
+
+            // 第三种
+            Vue.component("account",{
+                template : "#account"
+            });
+
+            Vue.component("dengzhu",{
+                template : "#dengzhu"
+            })
+
+
+            var vm = new Vue({
+                el : ".app"
+            })
+        </script>
+    </body>
+</html>

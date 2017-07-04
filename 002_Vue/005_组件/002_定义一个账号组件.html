@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>定义和注册组件</title>
+        <style></style>
+        <script src="../../vue_001.js"></script>
+    </head>
+    <body>
+
+        <div class="app">
+            <account></account>
+        </div>
+
+        <template id="account">
+            <h3>{{name}}</h3>
+            <a href="#">登录</a> | <a href="#">注册</a>
+        </template>
+
+        <script>
+            Vue.component("account",{
+                template : "#account",
+                // 注意，在组件使用data定义的是一个方法而不是一个对象，否则无效
+                data : function(){
+                    return {
+                        name : "账号组件页面"
+                    }
+                },
+                methods : {
+
+                }
+            })
+
+
+            var vm = new Vue({
+                el : ".app"
+            })
+        </script>
+    </body>
+</html>
