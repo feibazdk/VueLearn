@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>watch的使用</title>
+        <script src="../vue_002.js"></script>
+        <script src="../vue_router02.js"></script>
+    </head>
+    <body>
+        <div class="app">
+            <input type="text" v-model="firstName">
+            <input type="text" v-model="lastName">
+            <p>{{fullName}}</p>
+        </div>
+
+        <script>
+            new Vue({
+                el : ".app",
+                data : {
+                    firstName : "tencent",
+                    lastName : "alibaba",
+                    fullName : "tencent+lastName"
+                },
+                watch : {
+                    "firstName" : function(newVal, oldVal){
+                        this.fullName = this.firstName + this.lastName;
+                    },
+                    "lastName" : function(newVal, oldVal){
+                        this.fullName = this.firstName + this.lastName;
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

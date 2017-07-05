@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>vue2 路由的嵌套写法</title>
+        <script src="../vue_002.js"></script>
+        <script src="../vue_router02.js"></script>
+    </head>
+    <body>
+        <div class="app">
+            <router-link to="/account/register">登录</router-link>
+    		<router-link to="/account/login">注册</router-link>
+
+    		<router-view></router-view>
+        </div>
+
+        <script type="text/javascript">
+            var App = Vue.extend({});
+
+            var login = Vue.extend({
+                template : "<h3>登录页面</h3>"
+            })
+
+            var register = Vue.extend({
+                template : "<h3>注册页面</h3>"
+            })
+
+            var account = Vue.extend({
+                template : "<div><h1>账号组件</h1><router-view></router-view></div>"
+            })
+
+            var router = new VueRouter({
+                routes : [
+                    {
+                        path : '/account',
+                        component : account,
+                        children : [
+                            {
+                                path : "login",
+                                component : login
+                            },
+                            {
+                                path : "register",
+                                component : register
+                            }
+                        ]
+                    }
+                ]
+            })
+
+            new Vue({
+                el : ".app",
+                router : router,
+                watch : {
+                    "$route" : function(newVal, oldVal){
+                        console.log(newVal, oldVal);
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
