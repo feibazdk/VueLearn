@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Vue1.0路由的嵌套写法</title>
+        <script src="../vue_001.js"></script>
+        <script src="../vue_router01.min.js"></script>
+    </head>
+    <body>
+
+        <div class="app">
+            <a href="#" v-link="{path:'/account/login'}">登录</a>
+            <a href="#" v-link="{path:'/account/register'}">注册</a>
+            <!-- 占位来显示具体的组件内容 -->
+            <router-view></router-view>
+        </div>
+
+        <script>
+            var app = Vue.extend({});
+
+            var account = Vue.extend({
+                template : "<router-view></router-view>"
+            })
+
+            var login = Vue.extend({
+                template : "<h3>登录页面</h3>"
+            });
+
+            var register = Vue.extend({
+                template : "<h3>注册页面</h3>"
+            });
+
+            var router = new VueRouter();
+            router.map({
+                "account" : {
+                    component : account,
+                    subRoutes : {
+                        "login" : {component : login},
+                        "register" : {component :  register}
+                    }
+                }
+            });
+
+            router.start(app, '.app');
+
+            router.redirect({"/" : "/account/login"})
+
+        </script>
+    </body>
+</html>
