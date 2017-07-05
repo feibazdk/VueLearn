@@ -2,9 +2,31 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title></title>
+        <title>computed计算属性的用法</title>
+        <script src="../vue_001.js"></script>
     </head>
     <body>
-        
+        <div class="app">
+        	<input type="text" v-model="firstName">
+        	<input type="text" v-model="lastName">
+
+        	<p>{{fullName}}</p>
+    	</div>
+
+        <script>
+            var vm = new Vue({
+                el : ".app",
+                data : {
+                    firstName : "tencent",
+                    lastName : "alibaba",
+                    fullName : "tencent+lastName"
+                },
+                computed :{
+                    fullName : function(){
+                        return this.fullName = this.firstName + this.lastName;
+                    }
+                }
+            })
+        </script>
     </body>
 </html>
