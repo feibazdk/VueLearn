@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Vue1使用路由</title>
+        <script src="../vue_001.js"></script>
+        <script src="../vue_router01.min.js"></script>
+    </head>
+    <body>
+
+        <div class="app">
+            <a href="#" v-link="{path : '/login'}">登录</a>
+            <a href="#" v-link="{path : '/register'}">注册</a>
+
+            <router-view></router-view>
+        </div>
+
+        <script>
+            // 定义一个空的根组件
+            var App = Vue.extend({});
+
+            var login = Vue.extend({
+                template : "<h3>登录页面</h3>"
+            });
+
+            var register = Vue.extend({
+                template : "<h3>注册页面</h3>"
+            });
+
+            // 设置设置路由规则
+            var router = new VueRouter();
+            router.map({
+                "login" : {component : login},
+                "register" : {component : register}
+            });
+
+            // 开启路由
+            router.start(App, ".app");
+        </script>
+    </body>
+</html>
