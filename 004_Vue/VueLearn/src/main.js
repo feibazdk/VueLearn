@@ -23,6 +23,12 @@ import "../statics/css/site.css"
 import vueResource from "vue-resource";
 Vue.use(vueResource);
 
+// 9.0 定义一个全局过滤器实现日期的格式化
+import moment from "moment";
+Vue.filter("datafmt",function(input, fmtstring){
+	// 使用 moment.js 格式化日期
+	return moment(input).format(fmtstring)
+})
 
 // 4.0 导入vue-router
 import vueRouter from "vue-router";
@@ -33,13 +39,15 @@ Vue.use(vueRouter);
 // 4.3.1 导入路由规则对应的组件对象
 import home from "./components/home.vue";
 import shopcar from "./components/shopcar/car.vue";
+import newList from "./components/news/newslist.vue";
 
 // 4.3.2 定义路由规则
 var router = new vueRouter({
 	linkActiveClass:'mui-active',  //改变路由激活时的class名称
 	routes : [
 		{ path : "/home", component : home },
-		{ path : "/shopcar", component : shopcar }
+		{ path : "/shopcar", component : shopcar },
+		{ path : "/news/newslist", component : newList }
 	]
 })
 
