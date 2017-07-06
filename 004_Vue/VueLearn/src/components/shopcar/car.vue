@@ -1,6 +1,6 @@
 <template lang="html">
-    <div class="">
-        登录页面组件
+    <div class="headerTop">
+        我是购物车
     </div>
 </template>
 

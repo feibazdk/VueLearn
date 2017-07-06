@@ -1,6 +1,6 @@
 <template lang="html">
-    <div class="">
-        注册组件页面
+    <div class="headerTop">
+        我是首页
     </div>
 </template>
 
