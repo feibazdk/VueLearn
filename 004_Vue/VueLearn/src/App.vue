@@ -3,7 +3,11 @@
 <!-- template 主要存放html元素的 -->
 <template>
     <div>
-        <span v-text="msg" class="red"></span>
+        <router-link to="/login">登录</router-link>
+        <router-link to="/register">注册</router-link>
+
+        <!-- 路由占位符 -->
+        <router-view></router-view>
     </div>
 </template>
 
