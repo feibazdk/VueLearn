@@ -19,6 +19,11 @@ import "../statics/mui/css/mui.css";
 // 7.0 导入全局样式的css
 import "../statics/css/site.css"
 
+// 8.0 导入vue-resource模块
+import vueResource from "vue-resource";
+Vue.use(vueResource);
+
+
 // 4.0 导入vue-router
 import vueRouter from "vue-router";
 
