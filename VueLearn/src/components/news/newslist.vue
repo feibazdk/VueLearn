@@ -2,7 +2,7 @@
     <div class="headerTop">
         <ul class="mui-table-view">
             <li class="mui-table-view-cell mui-media"  v-for="item in list">
-                <router-link to="javascript:;">
+                <router-link v-bind="{to:'/news/newsinfo/' + item.id}">
                     <img class="mui-media-object mui-pull-left" :src="item.img_url">
                     <div class="mui-media-body">
                         {{item.title}}
