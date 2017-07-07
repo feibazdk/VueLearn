@@ -46,6 +46,7 @@ import newsInfo from "./components/news/newsinfo.vue";
 var router = new vueRouter({
 	linkActiveClass:'mui-active',  //改变路由激活时的class名称
 	routes : [
+		{ path : "/", component : home },
 		{ path : "/home", component : home },
 		{ path : "/shopcar", component : shopcar },
 		{ path : "/news/newslist", component : newList },
