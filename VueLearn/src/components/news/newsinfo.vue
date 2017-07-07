@@ -1,16 +1,27 @@
 <template lang="html">
     <div class="headerTop">
+        <!--1.0 实现新闻详情-->
         <div class="title">
             <h4 v-text="info.title"></h4>
             <p>{{info.add_time | datafmt('YYYY-MM-DD')}} {{info.click}}次浏览</p>
         </div>
         <div class="content" v-html="info.content"></div>
+
+        <!--2.0 实现评论组件的集成-->
+        <!--10.2 实现评论组件-->
+        <comment :id = "id"></comment>
     </div>
 </template>
 
 <script>
 import { Toast } from 'mint-ui';
+import common from '../../kits/common.js';
+import comment from '../subcom/comment.vue';
+
 export default {
+    components : {
+        comment
+    },
     data(){
         return {
             id : 0,
@@ -23,7 +34,7 @@ export default {
     },
     methods : {
         getInfo : function(){
-            var url = "http://182.254.146.100:8899/api/getnew/" + this.id
+            var url = common.apidomain + '/api/getnew/'+this.id;
 
             this.$http.get(url).then(function(res){
                 var body = res.body;

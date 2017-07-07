@@ -38,6 +38,7 @@
 
 <script>
 import { Toast } from 'mint-ui';
+import common from '../../kits/common.js';
 export default {
     data(){
         return {
@@ -50,7 +51,7 @@ export default {
     },
     methods : {
         getNewsList(){
-            var url = "http://182.254.146.100:8899/api/getnewslist";
+            var url = common.apidomain+'/api/getnewslist';
 
             this.$http.get(url).then(function(res){
                 var body = res.body;
