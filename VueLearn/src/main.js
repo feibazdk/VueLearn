@@ -28,7 +28,11 @@ import moment from "moment";
 Vue.filter("datafmt",function(input, fmtstring){
 	// 使用 moment.js 格式化日期
 	return moment(input).format(fmtstring)
-})
+});
+
+// 10.0 使用图片预览组件
+import VuePreview from 'vue-preview';
+Vue.use(VuePreview);
 
 // 4.0 导入vue-router
 import vueRouter from "vue-router";
@@ -42,6 +46,7 @@ import shopcar from "./components/shopcar/car.vue";
 import newList from "./components/news/newslist.vue";
 import newsInfo from "./components/news/newsinfo.vue";
 import photoList from "./components/photo/photolist.vue";
+import photoInfo from "./components/photo/photoinfo.vue";
 
 // 4.3.2 定义路由规则
 var router = new vueRouter({
@@ -52,7 +57,8 @@ var router = new vueRouter({
 		{ path : "/shopcar", component : shopcar },
 		{ path : "/news/newslist", component : newList },
 		{ path : "/news/newsinfo/:id", component : newsInfo },
-		{ path : "/photo/photolist", component : photoList }
+		{ path : "/photo/photolist", component : photoList },
+		{ path : "/photo/photoinfo/:id", component : photoInfo }
 	]
 })
 

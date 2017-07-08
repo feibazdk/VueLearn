@@ -12,11 +12,13 @@
         <div class="imglist">
             <ul>
                 <li v-for="item in list">
-                    <img v-lazy="item.img_url">
-                    <div class="desc">
-                        <h5 v-text="item.title"></h5>
-                        <p v-text="item.zhaiyao"></p>
-                    </div>
+                    <router-link v-bind="{to:'/photo/photoinfo/'+item.id}">
+                        <img v-lazy="item.img_url">
+                        <div class="desc">
+                            <h5 v-text="item.title"></h5>
+                            <p v-text="item.zhaiyao"></p>
+                        </div>
+                    </router-link>
                 </li>
             </ul>
         </div>
@@ -73,7 +75,7 @@ export default {
 }
 </script>
 
-<style lang="css" scope>
+<style scoped>
     /*1.0 图片分类*/
     .cate{
         width: 375px;
