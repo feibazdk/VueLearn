@@ -41,6 +41,7 @@ import home from "./components/home.vue";
 import shopcar from "./components/shopcar/car.vue";
 import newList from "./components/news/newslist.vue";
 import newsInfo from "./components/news/newsinfo.vue";
+import photoList from "./components/photo/photolist.vue";
 
 // 4.3.2 定义路由规则
 var router = new vueRouter({
@@ -50,7 +51,8 @@ var router = new vueRouter({
 		{ path : "/home", component : home },
 		{ path : "/shopcar", component : shopcar },
 		{ path : "/news/newslist", component : newList },
-		{ path : "/news/newsinfo/:id", component : newsInfo }
+		{ path : "/news/newsinfo/:id", component : newsInfo },
+		{ path : "/photo/photolist", component : photoList }
 	]
 })
 
