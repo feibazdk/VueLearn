@@ -1,13 +1,14 @@
 <template lang="html">
     <div class="headerTop">
         <!-- 1.0 轮播图：mint-ui中的 swipe组件实现 -->
-        <mt-swipe :auto="4000">
+        <!-- <mt-swipe :auto="4000"> -->
             <!-- <mt-swipe-item>1</mt-swipe-item>
             <mt-swipe-item>2</mt-swipe-item> -->
-            <mt-swipe-item v-for="item in list" :key="item.id">
+            <!-- <mt-swipe-item v-for="item in list" :key="item.id">
                 <img v-bind:src="item.img">
             </mt-swipe-item>
-        </mt-swipe>
+        </mt-swipe> -->
+        <slider :imgs="list"></slider>
 
         <div class="mui-content">
 		        <ul class="mui-table-view mui-grid-view mui-grid-9">
@@ -55,7 +56,11 @@
 <script>
 import { Toast } from 'mint-ui';
 import common from '../kits/common.js';
+import slider from './subcom/slider.vue';
 export default {
+    components : {
+        slider
+    },
     data(){
         return {
             list : []
@@ -84,18 +89,6 @@ export default {
 </script>
 
 <style scoped>
-    .mint-swipe{
-		height: 300px;
-	}
-	.mint-swipe-item img{
-        width: 100%;
-        height: 100%
-	}
-	.mint-swipe-item{
-		background-color: red;
-		width: 100%;
-		height: 300px;
-	}
     .mui-content,.mui-content ul{
 		background-color: #fff;
 	}
