@@ -1,5 +1,5 @@
 <template lang="html">
-    <div class="headeTop">
+    <div class="headerTop">
         <h4 v-text="info.title"></h4>
         <p class="line"></p>
         <p v-html="info.content"></p>
@@ -36,14 +36,14 @@ export default {
 </script>
 
 <style lang="css" scoped>
-    #tmpl{
+    .headerTop{
         padding: 5px;
     }
-    #tmpl h4{
+    .headerTop h4{
         color: #0094ff;
     }
 
-    #tmpl .line{
+    .headerTop .line{
         height: 1px;
         border:1px solid rgba(0,0,0,0.3);
     }
