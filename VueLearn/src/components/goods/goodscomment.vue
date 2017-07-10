@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import comment from "../subcom/comment.vue"
+import comment from "../subcom/comment.vue";
 export default {
     components : {
         comment
