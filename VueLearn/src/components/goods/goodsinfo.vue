@@ -17,7 +17,7 @@
                 </li>
                 <li>
                     <mt-button type="primary" size="small">立即购买</mt-button>
-                    <mt-button type="danger" size="small">加入购物车</mt-button>
+                    <mt-button type="danger" size="small" @click="toshopcar">加入购物车</mt-button>
                 </li>
             </ul>
         </div>
@@ -50,6 +50,7 @@ import { Toast } from 'mint-ui';
 import common from '../../kits/common.js';
 import slider from '../subcom/slider.vue';
 import inputnumber from "../subcom/inputNumber.vue";
+import {vm, COUNTSTR} from "../../kits/vm.js"
 export default {
     components : {
         slider,
@@ -69,6 +70,10 @@ export default {
         this.getinfo();
     },
     methods : {
+        toshopcar(){
+            console.log(COUNTSTR);
+            vm.$emit(COUNTSTR, this.inputNumberCount)
+        },
         getcount(count){
             this.inputNumberCount = count;
         },
