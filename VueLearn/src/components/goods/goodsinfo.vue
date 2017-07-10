@@ -14,6 +14,9 @@
                 </li>
                 <li class="inputli">
                     购买数量：<inputnumber v-on:dataobj="getcount" class="inputnumber"></inputnumber>
+                    <transition name="show" @before-enter="beforeEnter" @enter="enter" @after-enter="afterEnter">
+                        <div v-if="isshow" class="ball"></div>
+                    </transition>
                 </li>
                 <li>
                     <mt-button type="primary" size="small">立即购买</mt-button>
@@ -59,6 +62,7 @@ export default {
     },
     data(){
         return {
+            isshow : false,
             inputNumberCount:1,
             id : 0, // 表示商品的ID
             imgs : [],
@@ -71,6 +75,17 @@ export default {
         this.getinfo();
     },
     methods : {
+        beforeEnter(el){
+            el.style.transform = "translate(0px, 0px)";
+        },
+        enter(el, done){
+            el.offsetWidth;
+            el.style.transform = "translate(75px, 366px)";
+            done();
+        },
+        afterEnter(el){
+            this.isshow = !this.isshow;
+        },
         toshopcar(){
             console.log(COUNTSTR);
             vm.$emit(COUNTSTR, this.inputNumberCount);
@@ -78,6 +93,7 @@ export default {
             valueObj.goodsid = this.id;
             valueObj.count = this.inputNumberCount;
             setItem(valueObj);
+			this.isshow = !this.isshow;
         },
         getcount(count){
             this.inputNumberCount = count;
@@ -151,4 +167,15 @@ export default {
         left:100px;
         top:5px;
     }
+    .ball{
+		background-color: red;
+		height: 20px;
+		width: 20px;
+		border-radius: 50%;
+		position: absolute;
+		left:150px;
+		top:10px;
+		transition: all 0.4s ease;
+		z-index: 100;
+	}
 </style>
