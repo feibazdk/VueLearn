@@ -51,6 +51,7 @@ import goodsList from "./components/goods/goodslist.vue";
 import goodsInfo from "./components/goods/goodsinfo.vue";
 import goodsdesc from './components/goods/goodsdesc.vue';
 import goodsComment from './components/goods/goodscomment.vue';
+import car from './components/shopcar/car.vue';
 
 // 4.3.2 定义路由规则
 var router = new vueRouter({
@@ -65,8 +66,9 @@ var router = new vueRouter({
 		{ path : "/photo/photoinfo/:id", component : photoInfo },
 		{ path : "/goods/goodslist", component : goodsList },
 		{ path : "/goods/goodsinfo/:id", component : goodsInfo },
-		{path:'/goods/goodsdesc/:id', component:goodsdesc},
-		{path:'/goods/goodscomment/:id', component:goodsComment}
+		{ path : '/goods/goodsdesc/:id', component : goodsdesc},
+		{ path : '/goods/goodscomment/:id', component : goodsComment},
+		{ path : '/shopcar/car', component : car}
 	]
 })
 

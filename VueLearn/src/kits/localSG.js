@@ -19,3 +19,50 @@ export function getItem(){
 export function remoteItem(){
 
 }
+
+export function getgoodsObject(){
+
+    var arr = getItem();
+
+    var resObj ={};
+
+    for (var i = 0; i < arr.length; i++) {
+
+        var item = arr[i];
+
+        if (!resObj[item.goodsid]) {
+
+            resObj[item.goodsid] = item.count;
+
+        }else {
+            var count = resObj[item.goodsid];
+
+            resObj[item.goodsid] = count + item.count;
+        }
+
+    }
+    console.log(resObj[87]);
+    return resObj;
+}
+
+export function updateData(obj){
+    var arr = getItem();
+    var count = 1;
+    if (obj.type == "add") {
+        arr.push({goodsid : obj.goodsid, count: count});
+    }else {
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i].goodsid == obj.goodsid) {
+                if (arr[i].count > 1) {
+                    arr[i].count = arr[i].count - 1;
+                    break;
+                }else {
+                    arr.splice(i, 1);
+                    break;
+                }
+            }
+        }
+    }
+
+    localStorage.setItem(KEY,JSON.stringify(arr));
+}
