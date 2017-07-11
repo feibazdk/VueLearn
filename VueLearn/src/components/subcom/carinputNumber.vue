@@ -23,6 +23,7 @@ export default {
             this.count --;
             if (this.count < 1) {
                 this.count = 1;
+                return;
             }
             this.sendmessage('substrict');
         },

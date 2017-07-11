@@ -9,7 +9,7 @@
                     <ul>
                         <li>￥{{item.sell_price}}</li>
                         <li><carinputnumber :initCount="item.cou" :goodsid="item.id" v-on:cardataobj="getiInputNumber"></carinputnumber></li>
-                        <li><a href="#">删除</a></li>
+                        <li><a href="javascript:void(0)" @click="delrow(item.id, index)">删除</a></li>
                     </ul>
 
                 </div>
@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import {getgoodsObject, updateData} from '../../kits/localSg.js';
+import {getgoodsObject, updateData, removeItem} from '../../kits/localSg.js';
 import common from '../../kits/common.js';
 import carinputnumber from '../subcom/carinputNumber.vue';
 import { Toast } from 'mint-ui';
@@ -83,15 +83,20 @@ export default {
         this.getdatalist();
     },
     methods : {
+        delrow(goodsid, index){
+            this.value.splice(index, 1);
+            this.datalist.splice(index, 1);
+            removeItem(goodsid);
+        },
         getiInputNumber(resObj){
             console.log(resObj);
             updateData(resObj);
             for (var i = 0; i < this.datalist.length; i++) {
-                if (this.datalist[i].id == resObj.goodslist) {
+                if (this.datalist[i].id == resObj.goodsid) {
                     if (resObj.type == 'add') {
-                        this.datalist[i].acou = this.datalist[i] + 1;
+                        this.datalist[i].cou = this.datalist[i].cou + 1;
                     }else {
-                        this.datalist[i].acou = this.datalist[i] - 1;
+                        this.datalist[i].cou = this.datalist[i].cou - 1;
                     }
                     break;
                 }
