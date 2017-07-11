@@ -20,7 +20,7 @@
             <div class="desc">
                 <ul>
                     <li>总计(不含运费)</li>
-                    <li>已勾选商品X件,总价：￥5500元</li>
+                    <li>已勾选商品{{totalcount}}件,总价：￥{{totalAmount}}元</li>
                 </ul>
             </div>
             <div class="button">
@@ -41,8 +41,25 @@ export default {
     components:{
         carinputnumber
     },
+    computed : {
+        totalcount(){
+            var trueArr = this.value.filter(function(item){ return item });
+            var amount = 0;
+            this.value.forEach((item, index) => {
+                if (item) {
+                    var count = this.datalist[index].cou;
+                    var price = this.datalist[index].sell_price;
+                    var itemamount = count * price;
+                    amount += itemamount;
+                }
+            })
+            this.totalAmount = amount;
+            return trueArr.length;
+        }
+    },
     data(){
         return {
+            totalAmount : 0,
             value:[],
             datalist:[
                 // {
